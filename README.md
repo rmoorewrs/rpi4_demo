@@ -41,7 +41,7 @@ After editing `project_parameters` run the environment variable setup script
  <path-to-vxworks-install>/wrenv.sh -p vxworks/25.09     # use your path, your version
  ```
 
-### 3) Run the RPI4 VxWOrksproject creation script
+### 3) Run the RPI4 VxWorks project creation script
 ```
 ./02_create_rpi4.sh
 ```
@@ -66,9 +66,9 @@ Select the VIP project
 
 > Time-saving Tip:
 > If you've imported the projects into Workbench, you can add a command to the `.wrmakefile` in the VIP that will automatically copy the `uVxWorks` file to your tftp server. 
-
+>
 > First, open `.wrmakefile` in the VxWorks Image Project directory.
-
+>
 > Search for `deploy_output` in `.wrmakefile` and add your OS copy commands. Note that the extra copy commands will persist only as long as you do `Build Project` in Workbench. If you do a `Rebuild Project` the files may be refreshed and you'll have to reapply.
 
 ```
@@ -160,6 +160,11 @@ In the photo above, I wrapped cotton thread around the 3 pin connectors and adde
 Since you're only using 3 of the connectors on the FTDI/USB serial cable, the extra connectors can get in the way. Rather than cut the extras off (which runs the risk shorting something) I used a piece of heatshrink tubing to hold the extra connectors out of the way. This is completely non-destructive and allows you to potentially use the other signals in the future. 
 
 ![](https://github.com/rmoorewrs/rpi4_demo/blob/main/pics/vxworks-on-rpi4-1740071944476.webp)
+
+
+### Optional: Wire tie the serial cable to the RPI4 case
+This will help prevent accidental removal of the pins. Here's an example:
+![](https://github.com/rmoorewrs/rpi4_demo/blob/main/pics/rpi4-with-serial-cabletied.jpeg)
 
 
 ## Additional Notes:

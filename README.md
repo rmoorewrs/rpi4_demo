@@ -56,13 +56,16 @@ Open Workbench and select the `build` directory as the workspace. It will be emp
 To import in workbench, do the following (best practice to import the VSBs first):
 ```
 File->Import->VxWorks->VxWorks VSB
-Browse to the VSB project
-Select the VSB project
-
-File->Import->VxWorks->VxWorks VIP
-Browse to the VIP
-Select the VIP project
 ```
+- Browse to the VSB project
+- Select the VSB project
+
+```
+File->Import->VxWorks->VxWorks VIP
+```
+- Browse to the VIP project
+- Select the VIP project
+
 
 > Time-saving Tip:
 > If you've imported the projects into Workbench, you can add a command to the `.wrmakefile` in the VIP that will automatically copy the `uVxWorks` file to your tftp server. 
@@ -101,21 +104,27 @@ uboot.env
 Using the tftp boot method is great for a rapid development cycle. 
 Insert the microSD card into the RPI4 and apply power to boot. Hit a key to enter u-boot. Enther the IP addresses for your setup: 
 ```
-setenv ipaddr 192.168.12.32
+setenv ipaddr 192.168.12.35
 setenv netmask 255.255.255.0
 setenv serverip 192.168.12.51
+setenv boot_vxworks_tftp "tftpboot 0x100000 uVxWorks_rpi4; bootm 0x100000"
+setenv bootcmd "run boot_vxworks_tftp"
+saveenv
 
-tftpboot 0x100000 uVxWorks_rpi4
-bootm 0x100000
+run bootcmd
 ```
+The boot process should be automatic after the first time entering this. 
 
 ### 7) Alternately, you can boot from an image on the microSD card
 When you're ready to deploy, copy the `default/uVxWorks` to the root directory of the microSD card
 
 Set up the following `bootcmd` in u-boot
 ```
-fatload mmc 0:1 0x100000 uVxWorks
-bootm 0x100000
+setenv boot_vxworks_mmc "fatload mmc 0:1 0x100000 uVxWorks; bootm 0x100000"
+setenv bootcmd "run boot_vxworks_mmc"
+saveenv
+
+run bootcmd
 ```
 
 > NOTE: there's an issue in the RPI4 NIC(genetv5) or PHY driver that causes a delay of a minute or more in the Ethernet actually connecting correctly. Keep in mind, the RPI4 BSP is officually unsupported. 

@@ -118,6 +118,7 @@ fatload mmc 0:1 0x100000 uVxWorks
 bootm 0x100000
 ```
 
+> NOTE: there's an issue in the RPI4 NIC(genetv5) or PHY driver that causes a delay of a minute or more in the Ethernet actually connecting correctly. Keep in mind, the RPI4 BSP is officually unsupported. 
 
 ---
 

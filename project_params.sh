@@ -9,7 +9,7 @@ export VXWORKS_VERSION=25.09
 
 # export BSP_NAME=amd_zynqmp_3_0_1_1
 export BSP_NAME=rpi_4_0_1_3_0
-export DTS_FILE=amd-zcu102-rev-1.1.dts
+export DTS_FILE=rpi-4b.dts
 export VXWORKS_INSTALL_PATH=/opt/wr/vx/vx2509
 
 # set this for your network

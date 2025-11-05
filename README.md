@@ -1,12 +1,15 @@
-# VxWorks demo scripts AMD Kria rpi4 Starter Kit
+# VxWorks demo scripts for Raspberry Pi 4
 Rich Moore (rmoorewrs at gmail.com)
 
-This is a set of scripts that will build VxWorks projects that can be loaded on an AMD Kria rpi4 starter kit. 
+This is a set of scripts that will build VxWorks projects that can be loaded and run on a Raspberry Pi 4
 
 ## Prerequisites: 
 - Valid VxWorks 25.09 installation and active license
-- rpi4 with serial adapter
-- FAT32 microSD with RPI4 firmware, u-boot,etc (see notes)
+- Raspberry Pi 4 with a heatsink and/or fan on the CPU
+- USB serial adapter with connectors that can fit onto the RPI4 GPIO pins
+    - https://www.amazon.com/dp/B07B5TP67V works well
+
+- FAT32 microSD
 - tftp server
 - this git repo
 
@@ -37,11 +40,11 @@ After editing `project_parameters` run the environment variable setup script
  <path-to-vxworks-install>/wrenv.sh -p vxworks/25.09     # use your path, your version
  ```
 
-### 3) Run the A53 creation script (Case 1)
+### 3) Run the RPI4 project creation script
 ```
-./02_create_vsb_vip.sh
+./02_create_rpi4.sh
 ```
-This script patches the A53 DTS file to add the generic memory device, enable Ethernet on the A53 and disable UART on the A53. If you want to run the A53 cores alone (i.e. no R5) then you need to **edit the DTS file to enable the UART for the A53 cores.**  
+This script creates and configures the VxWorks Source Build and VxWorks Image Project needed to create a kernel image capable of booting on the RPI4. 
 
 
 ### 4) Optional: import the VSB and VIP projects into Workbench. 
@@ -62,15 +65,15 @@ Select the VIP project
 
 ### 5) tftp Booting from u-boot
 ```
-tftpboot 0x100000 vxWorks_rpi4.bin
-go 0x100000
+tftpboot 0x100000 uVxWorks_rpi4
+bootm 0x100000
 ```
 
 
 ---
 
 ## Making edit->build->test easier
-If you've imported the projects into Workbench, you can add a command to the `.wrmakefile` in the VIP that will automatically copy the `vxWorks.bin` file to your tftp server. 
+If you've imported the projects into Workbench, you can add a command to the `.wrmakefile` in the VIP that will automatically copy the `uVxWorks` file to your tftp server. 
 
 First, open `.wrmakefile` in the VxWorks Image Project directory.
 
@@ -80,7 +83,7 @@ Search for `deploy_output` in `.wrmakefile` and add your OS copy commands. Note 
 # entry point for deploying output after the build
 deploy_output ::
 	@echo "deploy_output"
-	cp default/vxWorks.bin /tftpboot/vxWorks_a53.bin
+	cp default/uVxWorks /tftpboot/uVxWorks_rpi4
 ```
 ---
 

@@ -4,7 +4,7 @@ echo "-Step one: edit the project_params.sh file to set your install path, IP ad
 echo " "
 echo "-Step two: run the Wind River environment setup: ./01_setup_wrenv.sh"
 echo " "
-echo "-Step three: run the 02_create_a53.sh
+echo "-Step three: run the 02_create_rpi4.sh"
 echo " "
 echo "-Note: run all scripts from this top-level directory, not from the build directory"
 echo " "

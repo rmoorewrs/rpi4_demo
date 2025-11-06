@@ -24,22 +24,27 @@ This is a set of scripts that will build VxWorks projects that can be loaded and
 ```
 git clone https://github.com/rmoorewrs/rpi4_demo.git
 cd rpi4_demo
-./00_runme_first.sh
 ```
->Note: 
-- edit the `project_params.sh` script to match your VxWorks installation path, IP addresses, etc
+>Note: both Linux and Windows hosts are supported. On the Windows host, the VxWorks installation includes a supported bash shell which will be started by the batch file. After that all scripts will be the same. 
+
+### 1.1) Edit the "01_set_wrenv.sh" or "01_set_wrenv.bat" file, depending on your host
+>Note: In the Windows batch file, you must enter both the Windows path and the Unix equivalent. For example
+```
+set WIND_BASE=C:\WindRiver\VxWorks\vx2509
+set VXWORKS_INSTALL_PATH=/c/WindRiver/VxWorks/vx2509
+```
 
 ### 2) Set up the environment variables for VxWorks
 
-After editing `project_parameters` run the environment variable setup script
+Next, run the environment variable setup script you just edited:
+Linux:
 ```
 ./01_set_wrenv.sh
 ```
-
- Alternately, run 
- ```
- <path-to-vxworks-install>/wrenv.sh -p vxworks/25.09     # use your path, your version
- ```
+Windows:
+```
+01_set_wrenv.bat
+```
 
 ### 3) Run the RPI4 VxWorks project creation script
 ```

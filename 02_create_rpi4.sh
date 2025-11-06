@@ -1,21 +1,30 @@
 #!/bin/sh
 
-# edit your site and project specifics in the project_params.sh file
-source $(pwd)/project_params.sh
-
 # check that this is a valid VxWorks dev shell
 if [ -z "$WIND_RELEASE_ID" ]; then echo "WR Dev Shell Not detected, run \<install_dir\>/wrenv.sh -p vxworks/${VXWORKS_VERSION} first";return -1; else echo "VxWorks Release $WIND_RELEASE_ID detected"; fi
 
+# please edit this section to match your VxWorks installation and Network addresses
+export PROJECT_NAME=rpi4
+export VXWORKS_VERSION=25.09
+export BSP_NAME=rpi_4_0_1_3_0
+export DTS_FILE=rpi-4b.dts
 
-export SUB_PROJECT_NAME=${PROJECT_NAME}
+# set this section for your target network
+export TARGET_IP=192.168.12.35
+export SERVER_IP=192.168.12.51
+export GATEWAY_IP=192.168.12.1
+export NETMASK=255.255.255.0
+export NETMASKHEX=ffffff00
+export NETMASKCIDR=24
+
 
 # set 'build' as project workspace
 mkdir -p build
 export MY_WS_DIR=$(pwd)/build
 
 # set project names
-export VSB_NAME=${SUB_PROJECT_NAME}-vsb
-export VIP_NAME=${SUB_PROJECT_NAME}-vip
+export VSB_NAME=${PROJECT_NAME}-vsb
+export VIP_NAME=${PROJECT_NAME}-vip
 
 # cd into the workspace directory
 cd ${MY_WS_DIR}
@@ -72,5 +81,5 @@ vxprj vip build
 cd $MY_WS_DIR
 
 echo Done. Remember to copy this to your tftpboot directory (if you're using tftp)
-echo cp ${SUB_PROJECT_NAME}-vip/default/uVxWorks.bin /tftpboot/uVxWorks_rpi4.bin
-echo - or edit the deploy_output line in '.wrmakefile' to copy it automatically
+echo cp ${PROJECT_NAME}-vip/default/uVxWorks /tftpboot/uVxWorks_rpi4
+echo - or edit the deploy_output line in '.wrmakefile' to copy it automatically every time the VIP is built

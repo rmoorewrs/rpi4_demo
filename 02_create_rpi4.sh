@@ -80,6 +80,6 @@ vxprj vip component add $VIP_NAME INCLUDE_VXEVENTS
 vxprj vip build 
 cd $MY_WS_DIR
 
-echo Done. Remember to copy this to your tftpboot directory (if you're using tftp)
-echo cp ${PROJECT_NAME}-vip/default/uVxWorks /tftpboot/uVxWorks_rpi4
-echo - or edit the deploy_output line in '.wrmakefile' to copy it automatically every time the VIP is built
+echo "Done. Remember to copy this to your tftpboot directory (if you're using tftp)"
+echo "cp ${PROJECT_NAME}-vip/default/uVxWorks /tftpboot/uVxWorks_rpi4"
+echo "- or edit the deploy_output line in '.wrmakefile' to copy it automatically every time the VIP is built"

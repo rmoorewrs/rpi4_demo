@@ -1,4 +1,4 @@
-rem please set the VXWORKS_INSTALL_PATH to match your setup
+# please set the VXWORKS_INSTALL_PATH to match your setup
 export VXWORKS_INSTALL_PATH=/opt/wr/vx/vx2509
 export VXWORKS_VERSION=25.09
 

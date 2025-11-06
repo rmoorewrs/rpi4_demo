@@ -25,7 +25,7 @@ This is a set of scripts that will build VxWorks projects that can be loaded and
 git clone https://github.com/rmoorewrs/rpi4_demo.git
 cd rpi4_demo
 ```
->Note: both Linux and Windows hosts are supported. On the Windows host, the VxWorks installation includes a supported bash shell which will be started by the batch file. After that all scripts will be the same. 
+>Note: both Linux and Windows hosts are supported. On the Windows host, the VxWorks installation includes a supported bash shell started by the batch file. After that all scripts will be the same. 
 
 ### 1.1) Edit the "01_set_wrenv.sh" or "01_set_wrenv.bat" file, depending on your host
 >Note: In the Windows batch file, you must enter both the Windows path and the Unix equivalent. For example

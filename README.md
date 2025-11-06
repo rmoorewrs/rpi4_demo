@@ -37,6 +37,7 @@ set VXWORKS_INSTALL_PATH=/c/WindRiver/VxWorks/vx2509
 ### 2) Set up the environment variables for VxWorks
 
 Next, run the environment variable setup script you just edited:
+
 Linux:
 ```
 ./01_set_wrenv.sh

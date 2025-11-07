@@ -133,7 +133,7 @@ saveenv
 run bootcmd
 ```
 
-> NOTE: there's an issue in the RPI4 NIC(genetv5) or PHY driver that causes a delay of a minute or more in the Ethernet actually connecting correctly. Keep in mind, the RPI4 BSP is officually unsupported. 
+> NOTE: there's an issue in the RPI4 BSP (officially unsupported) that causes a delay in Ethernet autonegotiation when connected to some switches. If you experience this problem, try a different switch. It may be more of an issue with some gigabit Etnernet switches, so try a 100baseT switch if possible. 
 
 ---
 
@@ -183,14 +183,14 @@ This will help prevent accidental removal of the pins. Here's an example:
 ![](https://github.com/rmoorewrs/rpi4_demo/blob/main/pics/rpi4-with-serial-cabletied.jpeg)
 
 
-## Additional Notes:
-Useful tutorial on building rpi4 toolchain here (but I didn't get this one working):
+## Appendix: Build your own u-boot:
+- Useful tutorial on building rpi4 toolchain here (but I didn't get this one working):
 https://hechao.li/2021/12/20/Boot-Raspberry-Pi-4-Using-uboot-and-Initramfs/
 
-This tutorial was actually better, and I got u-boot up and running:
+- This tutorial was actually better, and I got u-boot up and running:
 https://danmc.net/posts/raspberry-pi-4-b-u-boot/
 
-If you use to WR Linux LTS (located here on GitHub https://github.com/WindRiverLinux24), building `u-boot` is easy.
+- You can use the free Wind River Linux LTS on GitHub (https://github.com/WindRiverLinux24), which makes building `u-boot` very easy.
 ```
 $ mkdir u-boot-rpi4 && cd u-boot-rpi4
 $ git clone --branch WRLINUX_10_24_LTS https://github.com/WindRiverLinux24/wrlinux-x
@@ -199,7 +199,6 @@ $ . ./environment-setup-x86_64-wrlinuxsdk-linux 	// optional, forces the build o
 $ . ./oe-init-build-env [build-name-date]
 $ bitbake u-boot
 ```
-
 The output will be located in `<build_dir>/tmp-glibc/deploy/images/bcm-2xxx-rpi4/u-boot.bin`
 
 

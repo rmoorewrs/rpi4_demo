@@ -137,7 +137,23 @@ run bootcmd
 
 ---
 
-## Appendix:  Attach Serial Port to GPIO
+## Appendix 1: Changing the `u-boot` boot delay
+If you want more (or less) time before u-boot runs its automatic `bootcmd` do the following.
+- press any key as soon as u-boot begins to print to the screen to interrupt the automatic boot
+- once in the u-boot shell, check the current `bootdelay`
+```
+printenv bootdelay
+bootdelay=2
+```
+- now set it to the desired value
+```
+setenv bootdelay 5
+saveenv
+printenv bootdelay
+bootdelay=5
+```
+
+## Appendix 2:  Attach Serial Port to GPIO
 
 - Note that Raspberry Pi GPIO pins are 3.3V
 	- Connecting to 5V will damage the board 
@@ -183,7 +199,7 @@ This will help prevent accidental removal of the pins. Here's an example:
 ![](https://github.com/rmoorewrs/rpi4_demo/blob/main/pics/rpi4-with-serial-cabletied.jpeg)
 
 
-## Appendix: Build your own u-boot:
+## Appendix 3: Build your own u-boot:
 - Useful tutorial on building rpi4 toolchain here (but I didn't get this one working):
 https://hechao.li/2021/12/20/Boot-Raspberry-Pi-4-Using-uboot-and-Initramfs/
 
@@ -203,8 +219,9 @@ The output will be located in `<build_dir>/tmp-glibc/deploy/images/bcm-2xxx-rpi4
 
 
 ---
+---
 
-# Appendix: Building VxWorks for the RPI4 using Workbench
+# Appendix 4: Building VxWorks for the RPI4 using Workbench
 
 ## 1. Build the VxWorks VSB for RPI4
 - Open Workbench 4/VxWorks 7 and create a VSB for the RPI4
@@ -257,7 +274,6 @@ or
 ```
 
 ![](https://github.com/rmoorewrs/rpi4_demo/blob/main/pics/vxworks-on-rpi4-1740086052356.webp)
-
 
 
 #### 2.1.4 Optional: add utility features like ping

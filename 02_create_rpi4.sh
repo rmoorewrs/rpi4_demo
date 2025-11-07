@@ -3,20 +3,10 @@
 # check that this is a valid VxWorks dev shell
 if [ -z "$WIND_RELEASE_ID" ]; then echo "WR Dev Shell Not detected, run \<install_dir\>/wrenv.sh -p vxworks/${VXWORKS_VERSION} first";return -1; else echo "VxWorks Release $WIND_RELEASE_ID detected"; fi
 
-# please edit this section to match your VxWorks installation and Network addresses
+# please edit this section to match your VxWorks installation
 export PROJECT_NAME=rpi4
-export VXWORKS_VERSION=25.09
 export BSP_NAME=rpi_4_0_1_3_0
 export DTS_FILE=rpi-4b.dts
-
-# set this section for your target network
-export TARGET_IP=192.168.12.35
-export SERVER_IP=192.168.12.51
-export GATEWAY_IP=192.168.12.1
-export NETMASK=255.255.255.0
-export NETMASKHEX=ffffff00
-export NETMASKCIDR=24
-
 
 # set 'build' as project workspace
 mkdir -p build

@@ -4,6 +4,14 @@ set WIND_BASE=C:\vx\vx2509
 set VXWORKS_INSTALL_PATH=/c/vx/vx2509
 set VXWORKS_VERSION=25.09
 
+# set this section for your target network
+set TARGET_IP=192.168.12.35
+set SERVER_IP=192.168.12.51
+set GATEWAY_IP=192.168.12.1
+set NETMASK=255.255.255.0
+set NETMASKHEX=ffffff00
+set NETMASKCIDR=24
+
 
 echo setting VxWorks environment and starting bash on Windows
 echo next run "./02_create_rpi4.sh" to build your project

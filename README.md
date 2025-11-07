@@ -55,7 +55,7 @@ This script creates and configures the VxWorks Source Build and VxWorks Image Pr
 
 
 ### 4) Optional: import the VSB and VIP projects into Workbench. 
-Open Workbench and select the `build` directory as the workspace. It will be empty initially, so you must import these projects:
+Open Workbench and select the `build` directory as the workspace. The Workspace will appear empty initially, so you must import these projects:
 - rpi4-vsb
 - rpi4-vip
 

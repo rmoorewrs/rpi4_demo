@@ -37,7 +37,6 @@ vxprj vip component add $VIP_NAME INCLUDE_IPWRAP_IFCONFIG
 vxprj vip component add $VIP_NAME INCLUDE_IFCONFIG
 vxprj vip component add $VIP_NAME DRV_END_FDT_BCM_GENETv5
 vxprj vip parameter set $VIP_NAME IFCONFIG_1 '"ifname genet0","devname genet","inet '"${TARGET_IP}"'/'"${NETMASKCIDR}"'","gateway '"${GATEWAY_IP}"'"'
-vxprj vip parameter set $VIP_NAME DRV_END_FDT_BCM_GENETv5
 vxprj vip component add $VIP_NAME INCLUDE_PING
 vxprj vip component add $VIP_NAME INCLUDE_IPPING_CMD
 vxprj vip component add $VIP_NAME INCLUDE_IPTELNETS

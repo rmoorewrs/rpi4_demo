@@ -14,6 +14,8 @@ This is a set of scripts that will build VxWorks projects that can be loaded and
     - Ethernet cable connected to network
 - this git repo
 
+> Note: The Ethernet PHY driver in the RPI4 BSP has an issue with certain switches (probably most managed Ethernet switches). If the NIC seems to be up and running, but you can't ping anything on your network (gateway, etc) either try a different switch (unmanaged) or try going into the managed switch settings and turn off auto negotiate. 
+
 
 ---
 
@@ -133,8 +135,7 @@ saveenv
 run bootcmd
 ```
 
-> NOTE: there's an issue in the RPI4 BSP (officially unsupported) that causes a delay in Ethernet autonegotiation when connected to some switches. If you experience this problem, try a different switch. It may be more of an issue with some gigabit Etnernet switches, so try a 100baseT switch if possible. 
-
+> NOTE: If it seems like the NIC can't communicate with external devices over Ethernet (i.e. can't ping its own gateway) it may be an auto negotiation issue between the switch and the Ethernet PHY driver. Try connecting to a different switch, preferably unmanaged. 
 ---
 
 ## Appendix 1: Changing the `u-boot` boot delay
@@ -153,7 +154,7 @@ printenv bootdelay
 bootdelay=5
 ```
 
-## Appendix 2:  Attach Serial Port to GPIO
+## Appendix 2:  Attach Serial Port to RPI4 GPIO
 
 - Note that Raspberry Pi GPIO pins are 3.3V
 	- Connecting to 5V will damage the board 
